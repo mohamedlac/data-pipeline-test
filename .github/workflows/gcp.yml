@@ -36,5 +36,4 @@ jobs:
         GIT_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
       run: |-
         docker push europe-west1-docker.pkg.dev/data-pipeline-test-403316/images/$IMAGE_NAME:latest
-        docker push europe-west1-docker.pkg.dev/data-pipeline-test-403316/images/$IMAGE_NAME:$GIT_TAG
         
