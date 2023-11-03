@@ -6,11 +6,12 @@ RUN apt-get update
 COPY requirements.txt ./
 RUN pip install --upgrade -r requirements.txt
 
-# ENV APP_HOME /src
-# WORKDIR $APP_HOME
 # Copy local code to the container image.
 COPY src/ ./data-pipeline-test/src/
 COPY .env ./data-pipeline-test/
 RUN export PYTHONPATH="${PYTHONPATH}:/data-pipeline-test/"
+
+ENV APP_HOME ./data-pipeline-test/
+WORKDIR $APP_HOME
 
 CMD python src/main.py
