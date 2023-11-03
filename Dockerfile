@@ -6,9 +6,9 @@ RUN apt-get update
 COPY requirements.txt ./
 RUN pip install --upgrade -r requirements.txt
 
-ENV APP_HOME /src
-WORKDIR $APP_HOME
+# ENV APP_HOME /src
+# WORKDIR $APP_HOME
 # Copy local code to the container image.
 COPY src/ ./
 
-CMD python main.py
+CMD python src/main.py
