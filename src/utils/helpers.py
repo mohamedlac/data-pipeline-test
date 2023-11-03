@@ -3,7 +3,7 @@ from datetime import datetime
 from src.utils.custom_exceptions import (UnexpectedMonthError, UnexpectedYearError)
 
 
-def is_valid_url(self, url):
+def is_valid_url(url):
     # Define the regex pattern to capture the year and month values
     pattern = r'yellow_tripdata_(\d{4})-(\d{2})\.parquet'
 

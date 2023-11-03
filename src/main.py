@@ -1,20 +1,21 @@
 from src.modules.file_downloader import FileDownloader
 from src.utils.cloud_utils.gcp_manager import GCPManager
 from dotenv import dotenv_values
+from src.utils.helpers import is_valid_url
 
 
 def main():
-
+    config = dotenv_values(".env")
     file_downloader = FileDownloader()
     year = "2023"
     month = "07"
-    file_downloader.download(
-        year=year,
-        month=month,
+    url = config.get("TLC_BASE_URL").format(year=year, month=month)
+
+    file_downloader.download_file(
+        url=url,
         dst_file_name="yellow_trips_data_{year}-{month}.parquet".format(year=year, month=month)
     )
 
-    config = dotenv_values(".env")
     dst_bucket_name = config.get("DST_BUCKET")
     gcp_manager = GCPManager()
 
